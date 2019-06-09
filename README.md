@@ -93,7 +93,7 @@ Un « protocol » différent de `up` indique la plupart du temps que l’interfa
 ---
 
 **Réponse :**  
-Tout est ok. Vous trouverez ci-dessous une capture comme exemple avec R1 et ses interfaces up.
+Tout est ok. Vous trouverez ci-dessous une capture comme exemple avec R1 et ses interfaces up.  
 ![Topologie du réseau](images/1_interface_R1.PNG)
 ---
 
@@ -132,7 +132,7 @@ Pour votre topologie il est utile de contrôler la connectivité entre :
 ---
 
 **Réponse :**  
-Tous les pings sont parfaitement fonctionnels et VPC a recu une configuration correcte du DHCP
+Tous les pings sont parfaitement fonctionnels et VPC a recu une configuration correcte du DHCP.  
 ![Topologie du réseau](images/2_ping_R1_ISP.PNG)
 ![Topologie du réseau](images/2_ping_R2_ISP.PNG)
 ![Topologie du réseau](images/2_ping_R2_R1.PNG)
