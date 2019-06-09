@@ -386,7 +386,7 @@ On utilise IPsec avec IKE pour négocier la connexion et l'échange des clés et
 
 ---
 
-**Réponse :**  
+**Réponse :**
 Tunnel, nous l'avons configuré sur R2 avec crypto ipsec transform-set STRONG.... et on peut le vérifier avec la capture précedentes (show crypto ipsec transform-set sous transform set STRONG!)  
 
 ---
