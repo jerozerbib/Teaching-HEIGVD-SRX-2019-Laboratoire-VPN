@@ -346,13 +346,15 @@ debug ip icmp
 Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avant de démarrer votre ping, collectez aussi les éventuels messages à la console des différents routeurs. 
 
 **Question 6: Ensuite faites part de vos remarques dans votre rapport. :**
+
 ---
 
 **Réponse :**  
 On voit que R1 affiche les messages debug icmp alors que R2 non, mais on voit bien les paquets ESP (protocole IPsec). C'était le résultat que l'on attendait.
 ![Topologie du réseau](images/6.3_ping_VPS_loopback.jpeg)
 ![Topologie du réseau](images/6.3_debug_icmp_R1.jpeg)
-![Topologie du réseau](images/6.3_wireshare_R2.jpeg)
+![Topologie du réseau](images/6.3_wireshare_R2.jpeg)  
+
 ---
 
 **Question 7: Reportez dans votre rapport une petite explication concernant les différents « timers » utilisés par IKE et IPsec dans cet exercice (recherche Web). :**
