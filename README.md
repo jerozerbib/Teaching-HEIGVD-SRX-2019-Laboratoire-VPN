@@ -93,8 +93,10 @@ Un « protocol » différent de `up` indique la plupart du temps que l’interfa
 ---
 
 **Réponse :**  
-
+Tout est ok. Vous trouverez ci-dessous une capture comme exemple avec R1 et ses interfaces up.
+![Topologie du réseau](images/1_interface_R1.PNG)
 ---
+
 
 
 - Contrôlez que votre serveur DHCP sur R2 est fonctionnel - Contrôlez que le serveur DHCP préconfiguré pour vous sur R2 a bien distribué une adresse IP à votre station « VPC ».
@@ -130,7 +132,12 @@ Pour votre topologie il est utile de contrôler la connectivité entre :
 ---
 
 **Réponse :**  
-
+Tous les pings sont parfaitement fonctionnels et VPC a recu une configuration correcte du DHCP
+![Topologie du réseau](images/2_ping_R1_ISP.PNG)
+![Topologie du réseau](images/2_ping_R2_ISP.PNG)
+![Topologie du réseau](images/2_ping_R2_R1.PNG)
+![Topologie du réseau](images/2_ping_R2_VPC.PNG)
+![Topologie du réseau](images/2_showip_VPC.PNG)
 ---
 
 - Activation de « debug » et analyse des messages ping.
@@ -153,7 +160,8 @@ Pour déclencher et pratiquer les captures vous allez « pinger » votre routeur
 ---
 
 **Screenshots :**  
-
+![Topologie du réseau](images/3_ping_R1.jpeg)
+![Topologie du réseau](images/3_ping_wireshark.jpeg)
 ---
 
 ## Configuration VPN LAN 2 LAN
@@ -224,7 +232,8 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 ---
 
 **Réponse :**  
-
+![Topologie du réseau](images/4_R1_crypto_policy.jpeg)
+![Topologie du réseau](images/4_R2_crypto_policy.jpeg)
 ---
 
 
@@ -233,7 +242,8 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 ---
 
 **Réponse :**  
-
+![Topologie du réseau](images/5_R1_crypto_key.jpeg)
+![Topologie du réseau](images/5_R2_crypto_key.jpeg)
 ---
 
 ## Configuration IPsec
@@ -291,6 +301,12 @@ show crypto ipsec transform-set
 show access-list TO-CRYPT
 show crypto map
 ```
+---
+
+**Vérification :**  
+![Topologie du réseau](images/6.1_IPSEC_R1.jpeg)
+![Topologie du réseau](images/6.1_IPSEC_R2.jpeg)
+---
 
 ## Activation IPsec & test
 
@@ -322,11 +338,13 @@ debug ip icmp
 Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avant de démarrer votre ping, collectez aussi les éventuels messages à la console des différents routeurs. 
 
 **Question 6: Ensuite faites part de vos remarques dans votre rapport. :**
-
 ---
 
 **Réponse :**  
-
+On voit que R1 affiche les messages debug icmp alors que R2 non, mais on voit bien les paquets ESP (protocole IPsec). C'était le résultat que l'on attendait.
+![Topologie du réseau](images/6.3_ping_VPS_loopback.jpeg)
+![Topologie du réseau](images/6.3_debug_icmp_R1.jpeg)
+![Topologie du réseau](images/6.3_wireshare_R2.jpeg)
 ---
 
 **Question 7: Reportez dans votre rapport une petite explication concernant les différents « timers » utilisés par IKE et IPsec dans cet exercice (recherche Web). :**
@@ -334,7 +352,9 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 ---
 
 **Réponse :**  
-
+On peut remarquer dans les captures l'exercice précedant 2 "timers": 
+- Security association lifetime : 2560kilobytes/300 seconds représentants les 2.6MB ou 5 minutes avant un changement de SA
+- Security association idle-time : ici 900 secondes -> 15 minutes = temps avant que les SA soient effacées si inactivités
 ---
 
 
@@ -348,7 +368,7 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 ---
 
 **Réponse :**  
-
+On utilise IPsec avec IKE pour négocier la connexion et l'échange des clés et le protocol ESP pour le transfert des données.
 ---
 
 
@@ -357,6 +377,7 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 ---
 
 **Réponse :**  
+Tunnel, nous l'avons configuré sur R2 avec crypto ipsec transform-set STRONG.... et on peut le vérifier avec la capture précedentes (show crypto ipsec transform-set sous transform set STRONG!)
 
 ---
 
@@ -366,7 +387,7 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 ---
 
 **Réponse :**  
-
+Tout le paquet est chiffré (mode tunnel) et l'algorithme est AES-192
 ---
 
 
@@ -375,7 +396,7 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 ---
 
 **Réponse :**  
-
+Tout le paquet est authentifié (mode tunnel) grace à SHA-1
 ---
 
 
@@ -384,5 +405,5 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 ---
 
 **Réponse :**  
-
+Selon les 2 réponses précedentes, tout le paquet et protégé en intégrité
 ---
